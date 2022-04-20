@@ -1,16 +1,20 @@
 
-const Booking = ({id, name, email, checkedIn, removeBooking}) => {
+const Booking = ({id, name, email, checkedIn, removeBooking, updateCheckInStatus}) => {
 
-    const handleClick = () =>{
+    const handleDeleteClick = () =>{
         removeBooking(id);
     };
+
+    const handleCheckIn = () => {
+        updateCheckInStatus(id);
+    }
 
     return(
         <li>
             {name}
             {email}
-            {checkedIn}
-            <button onClick={handleClick}>Delete</button>
+            <p>{checkedIn ? <span>Checked In</span> : <button onClick={handleCheckIn}>CheckIn</button>}</p>
+            <button onClick={handleDeleteClick}>Delete</button>
         </li>
     );
 }
