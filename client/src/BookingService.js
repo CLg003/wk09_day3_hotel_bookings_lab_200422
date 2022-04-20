@@ -20,11 +20,11 @@ export const deleteBooking = (id) => {
     });
 };
 
-export const putBooking = (id, payload) => {
-    return fetch(baseURL + id, {
+export const putBooking = (payload) => {
+    return fetch(baseURL + payload._id, {
         method: 'PUT',
         body: JSON.stringify(payload),
-        header: {'Content-Type' : 'application/json' }
+        headers: {'Content-Type' : 'application/json' }
     })
     .then(res => res.json());
 };

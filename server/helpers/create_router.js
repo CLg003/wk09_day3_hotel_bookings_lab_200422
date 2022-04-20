@@ -43,6 +43,7 @@ const createRouter = function (collection) {
     router.put('/:id', (req, res) => {
         const id = req.params.id;
         const updatedBooking = req.body;
+        delete updatedBooking._id;
         collection
         .updateOne({_id: ObjectID(id)}, {$set: updatedBooking})
         .then((result) => res.json(result))

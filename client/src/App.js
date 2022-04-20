@@ -36,13 +36,11 @@ function App() {
       });
   };
 
-  const updateCheckInStatus = (id) => {
-    const updatedBooking = bookings.filter(booking => booking._id === id);
-    const bookingToUpdate = { name: updatedBooking.name, email: updatedBooking.email, checkedIn: !updatedBooking.checkedIn};
-    // ( bookingToUpdate.checkedIn ? bookingToUpdate.checkedIn = false : bookingToUpdate.checkedIn = true );
-    putBooking(id, bookingToUpdate)
+  const updateBookingDetails = (bookingToUpdate) => {
+
+    putBooking(bookingToUpdate)
     .then(() => {
-      const index = bookings.findIndex(booking => booking["_id"] === id);
+      const index = bookings.findIndex(booking => booking["_id"] === bookingToUpdate._id);
       const copyBookings = [...bookings];
       copyBookings[index].checkedIn = bookingToUpdate.checkedIn;
       setBookings(copyBookings);
@@ -52,7 +50,7 @@ function App() {
   return (
     <div>
       <Form addBooking={addBooking}/>
-      <BookingsList bookings={bookings} removeBooking={removeBooking} updateCheckInStatus={updateCheckInStatus}/>
+      <BookingsList bookings={bookings} removeBooking={removeBooking} updateBookingDetails={updateBookingDetails}/>
     </div>
   );
 }
