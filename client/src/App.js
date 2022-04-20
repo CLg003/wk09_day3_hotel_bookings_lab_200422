@@ -1,6 +1,7 @@
 import './App.css';
 import Form from './containers/Form';
 import BookingsList from './components/BookingsList'
+import Header from './components/Header';
 import {useState, useEffect} from 'react';
 import {getBookings, putBooking} from './BookingService';
 import {postBooking} from './BookingService';
@@ -48,7 +49,8 @@ function App() {
   }
 
   return (
-    <div>
+    <div id="app">
+      <Header />
       <Form addBooking={addBooking}/>
       <BookingsList bookings={bookings} removeBooking={removeBooking} updateBookingDetails={updateBookingDetails}/>
     </div>

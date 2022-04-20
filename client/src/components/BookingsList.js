@@ -7,7 +7,8 @@ const BookingsList = ({bookings, removeBooking, updateBookingDetails}) => {
     });
 
     return (
-        <div>
+        <div id="bookings-list">
+            <h3>Current Bookings</h3>
             <ol>
                 {bookingNodes}
             </ol>

@@ -23,11 +23,17 @@ const Form = ({addBooking}) => {
     return(
         <div>
             <form onSubmit={handleSubmit}>
-                <label>Customer Name:</label>
-                <input type="text" value={name} onChange={handleNameInput} required></input>
-                <label>Customer Email:</label>
-                <input type="email" value={email} onChange={handleEmailInput} required></input>
-                <input type="submit" value="Save"/>
+                <div id="form-inputs">
+                    <div id="form-name">
+                        <label>Customer Name:</label>
+                        <input type="text" className="text-box" value={name} onChange={handleNameInput} required></input>
+                    </div>
+                    <div id="form-email">
+                        <label>Customer Email:</label>
+                        <input type="email" className="text-box" value={email} onChange={handleEmailInput} required></input>
+                    </div>
+                </div>
+                <input type="submit" id="submit" value="Save Booking"/>
             </form>
         </div>
 

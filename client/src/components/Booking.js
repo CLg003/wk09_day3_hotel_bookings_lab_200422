@@ -16,10 +16,16 @@ const Booking = ({id, name, email, checkedIn, removeBooking, updateBookingDetail
 
     return(
         <li>
-            {name}
-            {email}
-            <p>{checkedIn ? <button onClick={handleCheckIn}>CheckOut</button> : <button onClick={handleCheckIn}>CheckIn</button>}</p>
-            <button onClick={handleDeleteClick}>Delete</button>
+            <div id="booking-details">
+                <div id="guest-details">
+                    <p><strong>Lead Guest Name: </strong>{name}</p>
+                    <p><strong>Email: </strong>{email}</p>
+                </div>
+                <div id="buttons">
+                    {checkedIn ? <button onClick={handleCheckIn} id="check-out">Check Out</button> : <button onClick={handleCheckIn} id="check-in">Check In</button>}
+                    <button onClick={handleDeleteClick} id="delete">Delete</button>
+                </div>
+            </div>
         </li>
     );
 }
