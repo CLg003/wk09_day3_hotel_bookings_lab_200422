@@ -1,14 +1,18 @@
 import './App.css';
 import Form from './containers/Form';
 import BookingsList from './components/BookingsList'
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
+import {getBookings} from './BookingService';
 
 function App() {
-  const [bookings, setBookings] = useState([
-    {name: "Julie",
-    email: "julie@email.com",
-    checkedIn: false}
-  ]);
+  const [bookings, setBookings] = useState([]);
+
+  useEffect(() => {
+    getBookings()
+    .then((data) => {
+      setBookings(data)
+    })
+  }, [])
 
 
   const addBooking = (newBooking) => {
