@@ -15,7 +15,8 @@ const Form = ({addBooking}) => {
     const handleSubmit = () => {
         addBooking({
             name, 
-            email
+            email,
+            checkedIn: false
         });
     }
 

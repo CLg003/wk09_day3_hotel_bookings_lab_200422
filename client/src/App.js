@@ -3,6 +3,8 @@ import Form from './containers/Form';
 import BookingsList from './components/BookingsList'
 import {useState, useEffect} from 'react';
 import {getBookings} from './BookingService';
+import {postBooking} from './BookingService';
+import {deleteBooking} from './BookingService';
 
 function App() {
   const [bookings, setBookings] = useState([]);
@@ -16,16 +18,27 @@ function App() {
 
 
   const addBooking = (newBooking) => {
-    newBooking["checkedIn"] = false;
-    const copyBookings = [...bookings]
-    copyBookings.push(newBooking);
-    setBookings(copyBookings);
+      postBooking(newBooking)
+      .then((newBooking) => {
+        const copyBookings = [...bookings]
+        copyBookings.push(newBooking)
+        setBookings(copyBookings)
+      });
+  };
+
+  const removeBooking = (id) => {
+      deleteBooking(id).then(() => {
+        const index = bookings.findIndex(booking => booking["_id"] === id);
+        const copyBookings = [...bookings];
+        copyBookings.splice(index, 1);
+        setBookings(copyBookings);
+      });
   };
 
   return (
     <div>
       <Form addBooking={addBooking}/>
-      <BookingsList bookings={bookings}/>
+      <BookingsList bookings={bookings} removeBooking={removeBooking}/>
     </div>
   );
 }
