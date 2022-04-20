@@ -23,10 +23,10 @@ const Form = ({addBooking}) => {
         <div>
             <form onSubmit={handleSubmit}>
                 <label>Customer Name:</label>
-                <input type="text" value={name} onChange={handleNameInput} require></input>
+                <input type="text" value={name} onChange={handleNameInput} required></input>
                 <label>Customer Email:</label>
-                <input type="email" value={email} onChange={handleEmailInput} require></input>
-                <input type="submit">Save</input>
+                <input type="email" value={email} onChange={handleEmailInput} required></input>
+                <input type="submit" value="Save"/>
             </form>
         </div>
 
